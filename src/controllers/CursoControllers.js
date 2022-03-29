@@ -41,5 +41,28 @@ CursoCtrl.listarId = async(req,res)=>{
 }
 */
 
+CursoCtrl.eliminar = async(req,res)=>{
+    const id= req.params.id
+
+     await Curso.findByIdAndRemove({_id:id})
+     res.json({
+
+        mensaje:'Curso eliminado Correctamente'
+
+
+     })
+    }
+
+     CursoCtrl.actualizar= async(req,res)=>{
+        const id= req.params.id
+    
+         await Curso.findByIdAndUpdate({_id:id}, req.body)
+         res.json({
+    
+            mensaje:'Curso Actualizado Correctamente'
+    
+    
+         })
+        }
 
 module.exports = CursoCtrl
