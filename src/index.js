@@ -17,6 +17,9 @@ app.use(bodyparser.urlencoded({extended: true}));
 app.use(bodyparser.json());
 app.use(cors({origen: '*'}));
 
+//routes
+app.use("/escuela", require("./routes/EscuelaRoutes"));
+
 
 app.listen(app.get('Port'),()=>{
   console.log('Servidor escuchando por el puerto',app.get('Port'))
