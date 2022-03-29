@@ -23,6 +23,8 @@ nombre: {
     type: String,
     required: true,
   },
+  
+  curso: String
 
 
 })

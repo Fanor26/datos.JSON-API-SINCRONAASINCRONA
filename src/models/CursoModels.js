@@ -1,16 +1,24 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const CursoShema = new Schema({
-
-nombrecurso:String,
-escuela:String,
-escuelaCiudad:String,
-
-date:{type:Date,default:Date.now}
-
+const CursoSchema = new Schema({
+    curso:{type: String, required:true},
+    categoria:{type: String, 
+    
+    },
+    profesor:{type: String, required:true},
+    name: {
+        type: String,
+      },
+      avatar: {
+        type: String,
+      },
+      cloudinary_id: {
+        type: String,
+      },
+    postDate:{type:Date, default:Date.now},
 
 })
 
-module.exports = mongoose.model('curso', CursoShema )
-
+const Cursos =mongoose.model("cursos", CursoSchema);
+module.exports=Cursos;
