@@ -2,7 +2,7 @@
 
 const mongoose = require('mongoose')
 
-URI =''
+URI ='mongodb+srv://juanor2022:juanor2022@cluster0.zcdns.mongodb.net/Escuelita2022?retryWrites=true&w=majority'
 
 
 

@@ -19,7 +19,7 @@ app.use(cors({origen: '*'}));
 
 //routes
 app.use("/escuela", require("./routes/EscuelaRoutes"));
-
+app.use("/curso", require("./routes/CursoRoutes"));
 
 app.listen(app.get('Port'),()=>{
   console.log('Servidor escuchando por el puerto',app.get('Port'))
