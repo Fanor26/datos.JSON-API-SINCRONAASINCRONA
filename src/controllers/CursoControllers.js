@@ -22,5 +22,12 @@ CursoCtrl.crear = async(req, res)=>{
         Creada Correctamente"
 } ) */
 }
+CursoCtrl.listar = async(req,res)=>{
+
+    const respuesta = await Curso.find()
+    res.json(respuesta)
+
+
+}
 
 module.exports = CursoCtrl
