@@ -53,16 +53,32 @@ CursoCtrl.eliminar = async(req,res)=>{
      })
     }
 
-     CursoCtrl.actualizar= async(req,res)=>{
-        const id= req.params.id
-    
-         await Curso.findByIdAndUpdate({_id:id}, req.body)
-         res.json({
-    
-            mensaje:'Curso Actualizado Correctamente'
-    
-    
-         })
+     CursoCtrl.actualizar= async (req, res) => {
+        try {
+          let curso = await Curso.findById(req.params.id);
+          // Eliminar imagen de cloudinary
+         
+          await cloudinary.uploader.destroy(curso.cloudinary_id);
+          // subir imagen a cloudinary 
+          
+          let result;
+          if (req.file) {
+            result = await cloudinary.uploader.upload(req.file.path);
+          }
+          const data = {
+            nombrecurso: req.body.nombrecurso || curso. nombrecurso,
+            categoria: req.body.categoria || curso. categoria,
+            profesor: req.body.profesor || curso.profesor,
+            
+            name: req.body.name || curso.name,
+            avatar: result?.secure_url || curso.avatar,
+            cloudinary_id: result?.public_id || curso.cloudinary_id,
+          };
+          curso = await Curso.findByIdAndUpdate(req.params.id, data, { new: true });
+          res.json(curso);
+        } catch (err) {
+          console.log(err);
         }
+      }
 
 module.exports = CursoCtrl
